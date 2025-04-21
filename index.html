@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Malcore Playbook Recipes</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 2em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .mono {
+      font-family: monospace;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+<h1><img src="assets/images/recipe-book.png" height="35" width="35"> Malcore Playbook Recipes</h1>
+<p>Available Recipes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recipe Name</th>
+      <th>Recipe SHA Hash</th>
+      <th>Recipe Version</th>
+      <th>Recipe Author</th>
+      <th>Download Recipe</th>
+    </tr>
+  </thead>
+  <tbody id="file-list">
+  </tbody>
+</table>
+
+<script>
+  fetch("assets/dbs/files.json")
+    .then(res => res.json())
+    .then(files => {
+      const tbody = document.getElementById("file-list");
+      files.forEach(file => {
+        const displayName = file.filename.replace(/\.py$/, '');
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="mono">${displayName}</td>
+          <td class="mono">${file.hashsum}</td>
+          <td class="mono">${file.version}</td>
+          <td class="mono">${file.author}</td>
+          <td><a href="recipes/${file.filename}" download>Download</a></td>
+        `;
+        tbody.appendChild(row);
+      });
+    });
+</script>
+
+</body>
+</html>
