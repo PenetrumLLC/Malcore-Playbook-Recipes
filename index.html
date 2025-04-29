@@ -31,6 +31,13 @@
       font-family: monospace;
       word-break: break-word;
     }
+    #search-box {
+      margin-bottom: 1em;
+      padding: 0.5em;
+      width: 100%;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
@@ -38,11 +45,13 @@
 <h1><img src="assets/images/recipe-book.png" height="35" width="35"> Malcore Playbook Recipes</h1>
 <p>Available Recipes:</p>
 
+<input type="text" id="search-box" placeholder="Search by filename or hash...">
+
 <table>
   <thead>
     <tr>
       <th>Recipe Name</th>
-      <th>Recipe SHA Hash</th>
+      <th>Recipe MD5 Hash</th>
       <th>Recipe Version</th>
       <th>Recipe Author</th>
       <th>Download Recipe</th>
@@ -53,23 +62,40 @@
 </table>
 
 <script>
+  let files = [];
+
   fetch("assets/dbs/files.json")
     .then(res => res.json())
-    .then(files => {
-      const tbody = document.getElementById("file-list");
-      files.forEach(file => {
-        const displayName = file.filename.replace(/\.py$/, '');
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td class="mono">${displayName}</td>
-          <td class="mono">${file.hashsum}</td>
-          <td class="mono">${file.version}</td>
-          <td class="mono">${file.author}</td>
-          <td><a href="recipes/${file.filename}" download>Download</a></td>
-        `;
-        tbody.appendChild(row);
-      });
+    .then(data => {
+      files = data;
+      renderFiles(files);
     });
+
+  function renderFiles(fileList) {
+    const tbody = document.getElementById("file-list");
+    tbody.innerHTML = '';
+    fileList.forEach(file => {
+      const displayName = file.filename.replace(/\.py$/, '');
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td class="mono">${displayName}</td>
+        <td class="mono">${file.hashsum}</td>
+        <td class="mono">${file.version}</td>
+        <td class="mono">${file.author}</td>
+        <td><a href="recipes/${file.filename}" download>Download</a></td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  document.getElementById("search-box").addEventListener("input", function() {
+    const query = this.value.toLowerCase();
+    const filtered = files.filter(file =>
+      file.filename.toLowerCase().includes(query) ||
+      file.hashsum.toLowerCase().includes(query)
+    );
+    renderFiles(filtered);
+  });
 </script>
 
 </body>

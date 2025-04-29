@@ -2,6 +2,7 @@ import os
 import re
 import json
 
+
 RECIPE_DIR = "recipes"
 DB_PATH = "assets/dbs"
 OUTPUT_FILE = os.path.join(DB_PATH, "files.json")
