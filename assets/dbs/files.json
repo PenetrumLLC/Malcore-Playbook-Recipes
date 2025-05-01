@@ -12,6 +12,24 @@
     "author": "Thomas Perkins"
   },
   {
+    "filename": "get-hashes.py",
+    "version": "0.1",
+    "hashsum": "da785a19eca0ec95d1dafd13b6355bc0",
+    "author": "Thomas Perkins"
+  },
+  {
+    "filename": "packer-checking.py",
+    "version": "0.1",
+    "hashsum": "e4585fdfa14768958e8416d9985a11b8",
+    "author": "Thomas Perkins"
+  },
+  {
+    "filename": "sections.py",
+    "version": "0.1",
+    "hashsum": "d9cf3128b7cf6d275a8b5a1edc5401ee",
+    "author": "Thomas Perkins"
+  },
+  {
     "filename": "strings.py",
     "version": "0.1",
     "hashsum": "56154ea90ca2da5c4ee1fd4bed599ce5",

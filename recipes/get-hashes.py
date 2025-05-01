@@ -20,10 +20,8 @@ def plugin(*args, **kwargs):
             return results
         else:
             _api = api.Api()
-            req = _api.upload_file(filename, "exif")
-            data = req['data']['data']
-            print(data)
+            req = _api.upload_file(filename, "gethash")
+            return req['data']['data']['hashes']
     except:
         return results
 
-    return results
