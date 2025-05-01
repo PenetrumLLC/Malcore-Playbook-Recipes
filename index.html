@@ -2,79 +2,204 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Malcore Playbook Recipes</title>
+  <title>Malcore Playbook Recipes - Malware Triage Automation Scripts</title>
+  <meta name="description" content="Browse and download opensource Malcore Playbook recipes">
+  <meta name="keywords" content="Malcore, malware analysis, automation, playbook, triage, cybersecurity, incident response, reverse engineering">
+  <meta name="author" content="Penetrum LLC">
+  <meta property="og:title" content="Malcore Playbook Recipes">
+  <meta property="og:description" content="Automate your companies triage workflows with the Malcore Playbook, explore and download the opensource recipes.">
+  <meta property="og:image" content="assets/images/recipe-book.webp">
+  <meta property="og:url" content="https://malcore.io/playbook-recipes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/images/recipe-book.png" type="image/png">
+
   <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #000;
+      --table-bg: #fff;
+      --header-bg: #f2f2f2;
+      --accent: #007bff;
+      --footer-text: #666;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #e0e0e0;
+      --table-bg: #1e1e1e;
+      --header-bg: #2a2a2a;
+      --accent: #66b2ff;
+      --footer-text: #aaa;
+    }
+
     body {
+      background: var(--bg);
+      color: var(--text);
       font-family: sans-serif;
-      background: #f9f9f9;
       padding: 2em;
+      margin: 0;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    header, main, footer {
+      max-width: 1000px;
+      margin: auto;
     }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-      text-align: left;
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    th {
-      background: #f2f2f2;
+
+    header h1 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    a {
-      color: #007bff;
+
+    .repo-buttons {
+      display: flex;
+      gap: 0.5em;
+      flex-wrap: wrap;
+    }
+
+    .repo-buttons a, #theme-toggle {
+      padding: 0.5em 1em;
+      background-color: var(--accent);
+      color: white;
       text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9em;
+      cursor: pointer;
     }
-    .mono {
-      font-family: monospace;
-      word-break: break-word;
-    }
+
     #search-box {
-      margin-bottom: 1em;
+      margin: 1em 0;
       padding: 0.5em;
       width: 100%;
       font-size: 1em;
       box-sizing: border-box;
+      background-color: var(--table-bg);
+      color: var(--text);
+      border: 1px solid #ccc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--table-bg);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #6663;
+      text-align: left;
+    }
+
+    th {
+      background: var(--header-bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: monospace;
+      word-break: break-word;
+    }
+
+    #pagination {
+      margin-top: 1em;
+      text-align: center;
+    }
+
+    .page-button {
+      padding: 0.4em 0.8em;
+      margin: 0 0.2em;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .page-button.active {
+      background-color: #0056b3;
+    }
+
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      text-align: center;
+      color: var(--footer-text);
     }
   </style>
 </head>
+
 <body>
+<header>
+  <h1>
+    <img id="logo-img" src="assets/images/recipe-book.png" alt="Malcore Playbook Logo" height="100" width="100">
+    Malcore Playbook Recipes
+  </h1>
 
-<h1><img src="assets/images/recipe-book.png" height="35" width="35"> Malcore Playbook Recipes</h1>
-<p>Available Recipes:</p>
+  <div class="repo-buttons">
+    <a href="https://github.com/PenetrumLLC/Malcore-Playbook" target="_blank">View Malcore-Playbook Source</a>
+    <a href="https://github.com/PenetrumLLC/Malcore-Playbook-Recipes" target="_blank">View Recipe Source</a>
+  </div>
+</header>
 
-<input type="text" id="search-box" placeholder="Search by filename or hash...">
+  <main>
+    <p>Explore publicly available recipes used by the Malcore Playbook for malware triage and automation.</p>
+    <input type="text" id="search-box" placeholder="Search by filename or hash...">
+    <table>
+      <thead>
+        <tr>
+          <th>Recipe Name</th>
+          <th>Recipe MD5 Hash</th>
+          <th>Recipe Version</th>
+          <th>Recipe Author</th>
+          <th>Download Recipe</th>
+        </tr>
+      </thead>
+      <tbody id="file-list"></tbody>
+    </table>
+    <div id="pagination"></div>
+  </main>
 
-<table>
-  <thead>
-    <tr>
-      <th>Recipe Name</th>
-      <th>Recipe MD5 Hash</th>
-      <th>Recipe Version</th>
-      <th>Recipe Author</th>
-      <th>Download Recipe</th>
-    </tr>
-  </thead>
-  <tbody id="file-list">
-  </tbody>
-</table>
+  <footer>
+    <p>&copy; <span id="current-year"></span> Powered by Penetrum LLC.</p>
+  </footer>
 
-<script>
+  <script>
   let files = [];
+  let filteredFiles = [];
+  let currentPage = 1;
+  const itemsPerPage = 8;
+
+  document.getElementById('current-year').textContent = new Date().getFullYear();
 
   fetch("assets/dbs/files.json")
     .then(res => res.json())
     .then(data => {
       files = data;
-      renderFiles(files);
+      filteredFiles = files;
+      renderPagination();
+      renderFiles();
     });
 
-  function renderFiles(fileList) {
+  function renderFiles() {
     const tbody = document.getElementById("file-list");
     tbody.innerHTML = '';
-    fileList.forEach(file => {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedFiles = filteredFiles.slice(start, end);
+
+    paginatedFiles.forEach(file => {
       const displayName = file.filename.replace(/\.py$/, '');
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -88,15 +213,58 @@
     });
   }
 
-  document.getElementById("search-box").addEventListener("input", function() {
+  function renderPagination() {
+    const totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.className = "page-button" + (i === currentPage ? " active" : "");
+      btn.textContent = i;
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        renderFiles();
+        renderPagination();
+      });
+      pagination.appendChild(btn);
+    }
+  }
+
+  document.getElementById("search-box").addEventListener("input", function () {
     const query = this.value.toLowerCase();
-    const filtered = files.filter(file =>
+    filteredFiles = files.filter(file =>
       file.filename.toLowerCase().includes(query) ||
       file.hashsum.toLowerCase().includes(query)
     );
-    renderFiles(filtered);
+    currentPage = 1;
+    renderPagination();
+    renderFiles();
   });
-</script>
 
+  const themeToggle = document.getElementById('theme-toggle');
+  const logoImg = document.getElementById('logo-img');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('theme');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.body.classList.add('dark');
+      logoImg.src = 'assets/images/inverted-recipe-book.png';
+    } else {
+      document.body.classList.remove('dark');
+      logoImg.src = 'assets/images/recipe-book.png';
+    }
+  }
+
+  const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+  applyTheme(initialTheme);
+
+  logoImg.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark');
+    const newTheme = isDark ? 'light' : 'dark';
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  });  </script>
 </body>
 </html>
