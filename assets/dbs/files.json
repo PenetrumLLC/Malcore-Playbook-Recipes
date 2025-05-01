@@ -14,7 +14,7 @@
   {
     "filename": "exif-data.py",
     "version": "0.1",
-    "hashsum": "4ae9b58e1cd3eb34cae5a6703afa84c4",
+    "hashsum": "d0aec68b7c278e9dbbdec04131f777c5",
     "author": "Thomas Perkins"
   },
   {
@@ -51,6 +51,12 @@
     "filename": "threat-score.py",
     "version": "0.1",
     "hashsum": "dab5235b948855c8211b486db750a27a",
+    "author": "Thomas Perkins"
+  },
+  {
+    "filename": "yara-scan.py",
+    "version": "0.1",
+    "hashsum": "60d49aaee736e6758cda2934bb5bccdc",
     "author": "Thomas Perkins"
   }
 ]
