@@ -6,9 +6,21 @@
     "author": "Thomas Perkins"
   },
   {
+    "filename": "deep-static.py",
+    "version": "0.1",
+    "hashsum": "a0b0fe453c837316d58cc733b32af30e",
+    "author": "Thomas Perkins"
+  },
+  {
     "filename": "dynamic-emulation.py",
     "version": "0.1",
     "hashsum": "0f31cf90565809b4d08ed83d62680478",
+    "author": "Thomas Perkins"
+  },
+  {
+    "filename": "exec-file-analysis.py",
+    "version": "0.1",
+    "hashsum": "9d4ffa87d3dabd8a4468d0b3b43161f9",
     "author": "Thomas Perkins"
   },
   {
