@@ -2,31 +2,31 @@
   {
     "filename": "dynamic-emulation.py",
     "version": "0.1",
-    "hashsum": "8311e49cce322aef0102c929aa00fda2",
+    "hashsum": "0f31cf90565809b4d08ed83d62680478",
     "author": "Thomas Perkins"
   },
   {
     "filename": "exif-data.py",
     "version": "0.1",
-    "hashsum": "da785a19eca0ec95d1dafd13b6355bc0",
+    "hashsum": "4ae9b58e1cd3eb34cae5a6703afa84c4",
     "author": "Thomas Perkins"
   },
   {
     "filename": "get-hashes.py",
     "version": "0.1",
-    "hashsum": "da785a19eca0ec95d1dafd13b6355bc0",
+    "hashsum": "d58ff3a26adc62dfa8cee1dce02f38de",
     "author": "Thomas Perkins"
   },
   {
     "filename": "packer-checking.py",
     "version": "0.1",
-    "hashsum": "e4585fdfa14768958e8416d9985a11b8",
+    "hashsum": "2f8cb59d58e0793838d8ea94a3083390",
     "author": "Thomas Perkins"
   },
   {
     "filename": "sections.py",
     "version": "0.1",
-    "hashsum": "d9cf3128b7cf6d275a8b5a1edc5401ee",
+    "hashsum": "4b315b18a4bdd4bb9437927c3872e4a5",
     "author": "Thomas Perkins"
   },
   {

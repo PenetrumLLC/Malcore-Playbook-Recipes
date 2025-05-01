@@ -3,7 +3,7 @@ import malcore_playbook.lib.settings as settings
 
 
 __version__ = "0.1"
-__hashsum__ = "da785a19eca0ec95d1dafd13b6355bc0"
+__hashsum__ = "d58ff3a26adc62dfa8cee1dce02f38de"
 __author__ = "Thomas Perkins"
 __excluded_plans__ = "free"
 
