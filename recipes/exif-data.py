@@ -3,7 +3,7 @@ import malcore_playbook.lib.settings as settings
 
 
 __version__ = "0.1"
-__hashsum__ = "4ae9b58e1cd3eb34cae5a6703afa84c4"
+__hashsum__ = "c2bbc264b83646834d14b810fab8b69e"
 __author__ = "Thomas Perkins"
 __excluded_plans__ = "free"
 
@@ -22,7 +22,7 @@ def plugin(*args, **kwargs):
             _api = api.Api()
             req = _api.upload_file(filename, "exif")
             data = req['data']['data']
-            print(data)
+            return data
     except:
         return results
 
