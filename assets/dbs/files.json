@@ -1,5 +1,11 @@
 [
   {
+    "filename": "ai-class.py",
+    "version": "0.1",
+    "hashsum": "958749871ba7dba0168e999a8fc07e4b",
+    "author": "Thomas Perkins"
+  },
+  {
     "filename": "dynamic-emulation.py",
     "version": "0.1",
     "hashsum": "0f31cf90565809b4d08ed83d62680478",
@@ -18,6 +24,12 @@
     "author": "Thomas Perkins"
   },
   {
+    "filename": "imports-and-exports.py",
+    "version": "0.1",
+    "hashsum": "55032c1cd5369b90b7c1672221b24796",
+    "author": "Thomas Perkins"
+  },
+  {
     "filename": "packer-checking.py",
     "version": "0.1",
     "hashsum": "2f8cb59d58e0793838d8ea94a3083390",
@@ -33,6 +45,12 @@
     "filename": "strings.py",
     "version": "0.1",
     "hashsum": "56154ea90ca2da5c4ee1fd4bed599ce5",
+    "author": "Thomas Perkins"
+  },
+  {
+    "filename": "threat-score.py",
+    "version": "0.1",
+    "hashsum": "dab5235b948855c8211b486db750a27a",
     "author": "Thomas Perkins"
   }
 ]
