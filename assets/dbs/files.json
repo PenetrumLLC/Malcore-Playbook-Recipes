@@ -6,6 +6,12 @@
     "author": "Thomas Perkins"
   },
   {
+    "filename": "cert-sig-lookup.py",
+    "version": "0.1",
+    "hashsum": "90255b236445a349da629e109db116ff",
+    "author": "Thomas Perkins"
+  },
+  {
     "filename": "deep-static.py",
     "version": "0.1",
     "hashsum": "a0b0fe453c837316d58cc733b32af30e",
