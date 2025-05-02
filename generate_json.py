@@ -24,6 +24,20 @@ def extract_metadata(filepath):
     }
 
 
+def update_recipe_count():
+    count_badge_path = "assets/dbs/recipe-count-badge.json"
+    recipe_count_path = "assets/dbs/files.json"
+    total_count = len(json.load(open(recipe_count_path)))
+    with open(count_badge_path, "w") as fh:
+        data = {
+            "schemaVersion": 1,
+            "label": "Available Recipes",
+            "message": f"{total_count}",
+            "color": "blue"
+        }
+        json.dump(data, fh)
+
+
 def main():
     entries = []
     for file in os.listdir(RECIPE_DIR):
@@ -34,6 +48,8 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as out:
         json.dump(entries, out, indent=2)
     print(f"Metadata written to: {OUTPUT_FILE}")
+    update_recipe_count()
+    print("Recipe count badge updated")
 
 
 if __name__ == "__main__":
