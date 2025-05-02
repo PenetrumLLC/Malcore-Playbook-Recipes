@@ -32,7 +32,7 @@ def update_recipe_count():
         data = {
             "schemaVersion": 1,
             "label": "Available Recipes",
-            "message": f"{total_count}",
+            "message": total_count,
             "color": "blue"
         }
         json.dump(data, fh)
